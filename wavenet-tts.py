@@ -11,6 +11,7 @@ client = texttospeech.TextToSpeechClient()
 # Loop through <files-source> directory
 path_in = "files-source"
 path_out = "files-audio-out"
+
 for filename in os.listdir(path_in):
     if filename.endswith(".txt") or filename.endswith(".ssml"):
         print(os.path.join(path_in, filename))
@@ -28,8 +29,10 @@ for filename in os.listdir(path_in):
 
         # Build the voice request, select the language code ("en-US") and the ssml
         # voice gender ("neutral")
+        # Voices names can be found under: https://cloud.google.com/text-to-speech/docs/voices
         voice = texttospeech.types.VoiceSelectionParams(
             language_code='en-US',
+            name='en-US-Wavenet-F',
             ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
 
         # Select the type of audio file you want returned
